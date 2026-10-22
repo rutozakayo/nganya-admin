@@ -1,0 +1,46 @@
+{
+  "name": "NGANYA HIRE",
+  "short_name": "NGANYA",
+  "description": "Hire customised Kenyan nganyas for events, road trips and special occasions.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#0A0A0A",
+  "theme_color": "#00F2FF",
+  "categories": ["travel", "shopping", "entertainment"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Browse Nganyas",
+      "short_name": "Browse",
+      "url": "/browse"
+    },
+    {
+      "name": "My Bookings",
+      "short_name": "Bookings",
+      "url": "/dashboard"
+    }
+  ]
+}
