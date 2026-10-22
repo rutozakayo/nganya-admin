@@ -1,57 +1,30 @@
-# NGANYA HIRE - Premium Booking Platform
+# NGANYA HIRE — Admin & owner console
 
-A production-ready Next.js application for hiring customized Kenyan matatus (nganyas).
+Staff console and vehicle-owner portal. Not a public registration surface for admins.
 
-## Features
+**Live:** https://nganya-admin.vercel.app
 
-- **Premium UI/UX**: Dark theme with neon accents inspired by Nairobi matatu culture.
-- **Role-Based Access**: Specialized dashboards for Customers, Drivers, Owners, and Admins.
-- **Real-Time Availability**: Conflict checks against driver schedules and existing bookings.
-- **PWA Support**: Installable on Android and Desktop with offline support and custom prompt.
-- **Secure Auth**: Powered by Auth.js with role-based middleware protection.
-- **Modern Stack**: Next.js 15, TypeScript, Drizzle ORM, Neon PostgreSQL, Tailwind CSS v4.
+## Scope
+- `/login` staff sign-in, `/post-login` role routing
+- `/admin` platform overview (customers, drivers, owners, vehicles, bookings)
+- `/owner` owner portal, `/owner/register` owner application
+- Customers and drivers are rejected here and sent to their own portals
 
-## Getting Started
+## Creating the first administrator
+There is no public admin signup. Promote an existing account with a trusted server-side
+procedure, e.g. against the shared database:
+```sql
+UPDATE "user" SET role = 'admin' WHERE email = 'you@example.com';
+```
 
-### 1. Prerequisites
-- Node.js 18+
-- A Neon PostgreSQL database (or any PostgreSQL instance)
+## Environment
+```
+DATABASE_URL=postgresql://...   # shared Neon database
+AUTH_SECRET=...                 # must match the other two apps
+```
 
-### 2. Installation
+## Local
 ```bash
 npm install --legacy-peer-deps
-```
-
-### 3. Environment Setup
-Create a `.env.local` file based on `.env.example`:
-```env
-DATABASE_URL=your_neon_postgres_url
-AUTH_SECRET=your_auth_secret_at_least_32_chars
-AUTH_URL=http://localhost:3000
-```
-
-### 4. Database Setup
-```bash
-# Push the schema to the database
-npm run db:push
-
-# Seed initial data (Admin, Owner, Driver, and Vehicles)
-npm run db:seed
-```
-
-### 5. Run Development Server
-```bash
 npm run dev
 ```
-
-## Admin Credentials (Seeded)
-- **Admin**: admin@nganyahire.com / admin123
-- **Owner**: owner@nganyahire.com / owner123
-- **Driver**: driver@nganyahire.com / driver123
-
-## Tech Stack Detail
-- **Frontend**: Next.js 15 (App Router), Tailwind CSS v4, Lucide Icons.
-- **Backend**: Next.js Server Actions & Route Handlers.
-- **Database**: Neon PostgreSQL via Drizzle ORM.
-- **Auth**: Auth.js (NextAuth v5 Beta).
-- **PWA**: Custom service worker and manifest.
